@@ -2,6 +2,16 @@ package christmas;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        askVisitDate();
+    }
+
+    private static Date askVisitDate() {
+        try {
+            return new Date(InputView.inputVisitDate());
+        }
+        catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return askVisitDate();
     }
 }
