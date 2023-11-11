@@ -3,6 +3,7 @@ package christmas;
 public class Application {
     public static void main(String[] args) {
         askVisitDate();
+        askMenuAndCount();
     }
 
     private static Date askVisitDate() {
@@ -13,5 +14,15 @@ public class Application {
             System.out.println(exception.getMessage());
         }
         return askVisitDate();
+    }
+
+    private static Order askMenuAndCount() {
+        try {
+            return new Order(InputView.inputMenuAndCount());
+        }
+        catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return askMenuAndCount();
     }
 }

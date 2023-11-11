@@ -4,5 +4,5 @@ public enum Category {
     APPETIZER,
     MAIN,
     DESSERT,
-    DRINK;
+    DRINK
 }
