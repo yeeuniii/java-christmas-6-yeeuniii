@@ -6,7 +6,7 @@ public enum MenuInformation {
     CAESAR_SALAD("시저샐러드", 8000, Category.APPETIZER),
     T_BONE_STAKE("티본스테이크", 55000, Category.MAIN),
     BARBCUE_RIBS("바비큐립", 54000, Category.MAIN),
-    SEAFOOD_PASTA("해산물", 35000, Category.MAIN),
+    SEAFOOD_PASTA("해산물파스타", 35000, Category.MAIN),
     CHRISTMAS_PASTA("크리스마스파스타", 25000, Category.MAIN),
     CHOCOLATE_CAKE("초코케이크", 15000, Category.DESSERT),
     ICE_CREAM("아이스크림", 5000, Category.DESSERT),
