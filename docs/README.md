@@ -19,9 +19,10 @@
 
 ## Order
 주문서
-- 주문들 list of menu
+- 주문들 map of menus : menu - count
   <br></br>
 - 유효성 검사
+  - 메뉴의 개수가 1 이상인지
   - 중복 메뉴
   - 음료만 주문했는지 확인
   - 메뉴가 20개 이상인지 확인
@@ -31,26 +32,21 @@
 
 ## Menu
 메뉴
-- Category ; 메뉴의 정보 - 이름 및 가격
-- 주문 개수
+- 이름
+- 가격
+- 카테고리
+
   <br></br>
 - 유효성 검사
   - 존재하는 메뉴인지
-  - 메뉴의 개수가 1 이상인지
   - 메뉴 형식이 다른 경우
 <br></br>
 - 가격 계산
-- get 카테고리
-
-### interface Category
 - isIn : 해당 이름의 메뉴가 카테고리에 포함되는지 확인
 
-### enum APPETIZER, MAIN, DESSERT, DRINK
-Category 인터페이스 구현
-- 메뉴 이름 name
-- 메뉴 가격 price
-  <br></br>
-- get 카테고리 
+
+### enum Category
+APPETIZER, MAIN, DESSERT, DRINK
 
 ## Benefit
 혜택
