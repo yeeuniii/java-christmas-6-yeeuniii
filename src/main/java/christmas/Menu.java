@@ -31,7 +31,22 @@ public class Menu {
         return !count.matches("[1-9]\\d*");
     }
 
-    public boolean equals(final String name) {
-        return this.menu.equals(name);
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+        return this.menu.equals(((Menu)other).menu);
+    }
+
+    @Override
+    public int hashCode() {
+        if (menu == null) {
+            return 0;
+        }
+        return menu.hashCode();
     }
 }

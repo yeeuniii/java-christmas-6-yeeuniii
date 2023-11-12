@@ -33,8 +33,4 @@ public enum MenuInformation {
         }
         return null;
     }
-
-    public boolean equals(final String name) {
-        return this.name.equals(name);
-    }
 }

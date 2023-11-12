@@ -1,5 +1,6 @@
 package christmas;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class Order {
         for (String menu : menus) {
             addMenu(menu);
         }
+        checkValidMenus();
     }
 
     private void addMenu(final String menu) {
@@ -18,22 +20,21 @@ public class Order {
         if (info.length != 2) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
-        checkDuplicated(info[0]);
         this.menus.add(new Menu(info[0], info[1]));
     }
 
-    private void checkDuplicated(final String menuName) {
-        if (isDuplicatedMenu(menuName)) {
+    private void checkValidMenus() {
+        checkDuplicated();
+    }
+
+    private void checkDuplicated() {
+        if (isDuplicatedMenu()) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
 
-    private boolean isDuplicatedMenu(final String menuName) {
-        for (Menu menu : menus) {
-            if (menu.equals(menuName)) {
-                return true;
-            }
-        }
-        return false;
+    private boolean isDuplicatedMenu() {
+        HashSet<Menu> duplicated = new HashSet<>(menus);
+        return duplicated.size() != menus.size();
     }
 }

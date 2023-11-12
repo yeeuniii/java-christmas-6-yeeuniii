@@ -35,4 +35,13 @@ public class MenuTest {
 
         assertThat(menu).isInstanceOf(Menu.class);
     }
+
+    @DisplayName("equals 메서드 오버라이딩 확인")
+    @Test
+    void checkEquals() {
+        Menu menu = new Menu("양송이수프", "3");
+
+        boolean result = menu.equals(new Menu("양송이수프", "4"));
+        assertThat(result).isTrue();
+    }
 }
