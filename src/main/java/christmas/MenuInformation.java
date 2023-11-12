@@ -33,4 +33,8 @@ public enum MenuInformation {
         }
         return null;
     }
+
+    public boolean isDrink() {
+        return category == Category.DRINK;
+    }
 }

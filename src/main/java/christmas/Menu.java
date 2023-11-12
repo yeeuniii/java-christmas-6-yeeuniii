@@ -31,6 +31,10 @@ public class Menu {
         return !count.matches("[1-9]\\d*");
     }
 
+    public boolean isDrink() {
+        return menu.isDrink();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) {

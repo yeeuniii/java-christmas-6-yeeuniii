@@ -23,4 +23,13 @@ public class OrderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Order.EXCEPTION_MESSAGE);
     }
+
+    @DisplayName("음료 주문 들어온 경우 예외 처리")
+    @Test
+    void createOnlyDrinkOrder() {
+        String[] menu = {"제로콜라-3", "샴페인-1", "레드와인-2"};
+        assertThatThrownBy(() -> new Order(menu))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Order.EXCEPTION_MESSAGE);
+    }
 }

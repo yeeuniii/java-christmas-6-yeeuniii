@@ -20,15 +20,16 @@ public class Order {
         if (info.length != 2) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
-        this.menus.add(new Menu(info[0], info[1]));
+        menus.add(new Menu(info[0], info[1]));
     }
 
     private void checkValidMenus() {
-        checkDuplicated();
+        checkValidation(isDuplicatedMenu());
+        checkValidation(hasOnlyDrink());
     }
 
-    private void checkDuplicated() {
-        if (isDuplicatedMenu()) {
+    private void checkValidation(boolean isInvalid) {
+        if (isInvalid) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
@@ -36,5 +37,14 @@ public class Order {
     private boolean isDuplicatedMenu() {
         HashSet<Menu> duplicated = new HashSet<>(menus);
         return duplicated.size() != menus.size();
+    }
+
+    private boolean hasOnlyDrink() {
+        for (Menu menu : menus) {
+            if (!menu.isDrink()) {
+                return false;
+            }
+        }
+        return true;
     }
 }
