@@ -2,8 +2,9 @@ package christmas;
 
 public class Application {
     public static void main(String[] args) {
-        askVisitDate();
-        askMenuAndCount();
+        Date date = askVisitDate();
+        Order order = askMenuAndCount();
+        OutputView.displayEventPlanner(order);
     }
 
     private static Date askVisitDate() {

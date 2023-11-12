@@ -47,4 +47,14 @@ public class Order {
         }
         return true;
     }
+
+    public String getAllMenuList() {
+        StringBuilder result = new StringBuilder();
+
+        for (Menu menu : menus) {
+            result.append(menu.getMenuAndCount());
+            result.append("\n");
+        }
+        return result.toString();
+    }
 }

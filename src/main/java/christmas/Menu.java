@@ -35,6 +35,10 @@ public class Menu {
         return menu.isDrink();
     }
 
+    public String getMenuAndCount() {
+        return menu.getMenu(count);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) {
