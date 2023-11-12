@@ -14,4 +14,13 @@ public class OrderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Order.EXCEPTION_MESSAGE);
     }
+
+    @DisplayName("중복된 주문 들어온 경우 예외 처리")
+    @Test
+    void createDuplicatedOrder() {
+        String[] menu = {"양송이수프-3", "양송이수프-1"};
+        assertThatThrownBy(() -> new Order(menu))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Order.EXCEPTION_MESSAGE);
+    }
 }

@@ -1,32 +1,37 @@
 package christmas;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class DateTest {
-    @DisplayName("숫자가 아닌 문자열로 생성시 예외 반환 확인")
-    @Test
-    void createNonNumericDate() {
-        assertThatThrownBy(() -> new Date("one"))
+    @DisplayName("숫자가 아닌 문자열로 날짜 생성시 예외 반환")
+    @ValueSource(strings = {"양송이스프", "one", "asdf"})
+    @ParameterizedTest
+    void createNonNumericDate(String day) {
+        assertThatThrownBy(() -> new Date(day))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+                .hasMessage(Date.EXCEPTION_MESSAGE);
     }
 
-    @DisplayName("유효범위 날짜보다 작은 수의 날짜 생성시 예외 반환 확인")
-    @Test
-    void createUnderRangedDate() {
-        assertThatThrownBy(() -> new Date("0"))
+    @DisplayName("유효한 범위가 아닌 날짜 생성시 예외 반환")
+    @ValueSource(strings = {"32", "0", "-1"})
+    @ParameterizedTest
+    void createUnderRangedDate(String day) {
+        assertThatThrownBy(() -> new Date(day))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+                .hasMessage(Date.EXCEPTION_MESSAGE);
     }
 
-    @DisplayName("유효범위 날짜보다 큰 수의 날짜 생성시 예외 반환 확인")
-    @Test
-    void createOverRangedDate() {
-        assertThatThrownBy(() -> new Date("32"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+    @DisplayName("유효한 범위 날짜 생성 확인")
+    @ValueSource(strings = {"1", "15", "31"})
+    @ParameterizedTest
+    void createValidRangeDate(String day) {
+        Date date = new Date(day);
+
+        assertThat(date).isInstanceOf(Date.class);
     }
 }

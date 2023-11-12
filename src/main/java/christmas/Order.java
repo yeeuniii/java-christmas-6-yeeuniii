@@ -16,7 +16,7 @@ public class Order {
     private void addMenu(final String menu) {
         String[] info = menu.split("-");
         if (info.length != 2) {
-            throw new IllegalArgumentException(EXCEPTION_MESSAGE + "format");
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
         checkDuplicated(info[0]);
         this.menus.add(new Menu(info[0], info[1]));
@@ -24,7 +24,7 @@ public class Order {
 
     private void checkDuplicated(final String menuName) {
         if (isDuplicatedMenu(menuName)) {
-            throw new IllegalArgumentException(EXCEPTION_MESSAGE + "duplicated");
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
 

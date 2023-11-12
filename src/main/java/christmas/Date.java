@@ -1,6 +1,7 @@
 package christmas;
 
 public class Date {
+    public static final String EXCEPTION_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
     private final int day;
 
     public Date(String day) {
@@ -11,7 +12,7 @@ public class Date {
 
     private void checkDayFormat(String day) {
         if (isInvalidDay(day)) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
 
@@ -21,7 +22,7 @@ public class Date {
 
     private void checkRange() {
         if (isInvalidRange()) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
 
