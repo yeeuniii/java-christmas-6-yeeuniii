@@ -1,6 +1,7 @@
 package christmas;
 
 public class Benefit {
+    public static final String GIFT_EVENT_MENU = "샴페인";
     private static final int GIFT_EVENT_PRICE = 120000;
     private static final int WEEK_EVENT_PRICE = 2023;
     private static final int SPECIAL_EVENT_PRICE = 1000;

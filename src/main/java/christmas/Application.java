@@ -4,7 +4,8 @@ public class Application {
     public static void main(String[] args) {
         Date date = askVisitDate();
         Order order = askMenuAndCount();
-        OutputView.displayEventPlanner(order);
+        Benefit benefit = new Benefit(date);
+        OutputView.displayEventPlanner(order, benefit);
     }
 
     private static Date askVisitDate() {
