@@ -36,7 +36,11 @@ public class Menu {
     }
 
     public String getMenuAndCount() {
-        return menu.getMenu(count);
+        return menu.getMessageCombinedMenuAndCount(count);
+    }
+
+    public int getPrice() {
+        return menu.getPriceByCount(count);
     }
 
     @Override

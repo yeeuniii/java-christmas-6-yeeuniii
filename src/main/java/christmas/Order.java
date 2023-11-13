@@ -57,4 +57,13 @@ public class Order {
         }
         return result.toString();
     }
+
+    public int calculateTotalPriceBeforeBenefit() {
+        int total = 0;
+
+        for (Menu menu : menus) {
+            total += menu.getPrice();
+        }
+        return total;
+    }
 }

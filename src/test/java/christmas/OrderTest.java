@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderTest {
     @DisplayName("잘못된 형식의 주문 들어온 경우 예외 처리")
@@ -31,5 +32,15 @@ public class OrderTest {
         assertThatThrownBy(() -> new Order(menu))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Order.EXCEPTION_MESSAGE);
+    }
+
+    @DisplayName("할인 전 총 주문 금액 계산")
+    @Test
+    void calculateTotalOrderPriceBeforeSale() {
+        String[] menus = {"티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"};
+        Order order = new Order(menus);
+        int result  = order.calculateTotalPriceBeforeBenefit();
+
+        assertThat(result).isEqualTo(142000);
     }
 }
