@@ -21,6 +21,8 @@ public class OutputView {
         System.out.println(makeAllDiscountMessage(order, benefit));
         System.out.println("<총헤택 금액>");
         System.out.println(makeTotalDiscountPriceMessage(benefit));
+        System.out.println("\n<할인 후 예상 결제 금액>");
+        System.out.println(makePriceMessage(order.calculateTotalPriceBeforeBenefit() - benefit.getTotalDiscount()));
     }
 
     private static String makeGiftMenuMessage(final Benefit benefit) {
