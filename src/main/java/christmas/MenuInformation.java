@@ -34,6 +34,14 @@ public enum MenuInformation {
         return null;
     }
 
+    public boolean isMain() {
+        return category == Category.MAIN;
+    }
+
+    public boolean isDessert() {
+        return category == Category.DESSERT;
+    }
+
     public boolean isDrink() {
         return category == Category.DRINK;
     }

@@ -66,4 +66,26 @@ public class Order {
         }
         return total;
     }
+
+    public int getNumberOfMainMenu() {
+        int count = 0;
+
+        for (Menu menu : menus) {
+            if (menu.isMain()) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int getNumberOfDessertMenu() {
+        int count = 0;
+
+        for (Menu menu : menus) {
+            if (menu.isDessert()) {
+                count++;
+            }
+        }
+        return count;
+    }
 }

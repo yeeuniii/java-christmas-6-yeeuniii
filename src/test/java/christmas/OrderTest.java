@@ -43,4 +43,14 @@ public class OrderTest {
 
         assertThat(result).isEqualTo(142000);
     }
+
+    @DisplayName("메인, 디저트 메뉴 수 구하기")
+    @Test
+    void getNumberOfMainMenu() {
+        String[] menus = {"티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"};
+        Order order = new Order(menus);
+
+        assertThat(order.getNumberOfMainMenu()).isEqualTo(2);
+        assertThat(order.getNumberOfDessertMenu()).isEqualTo(1);
+    }
 }

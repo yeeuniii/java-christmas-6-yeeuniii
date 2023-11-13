@@ -31,6 +31,14 @@ public class Menu {
         return !count.matches("[1-9]\\d*");
     }
 
+    public boolean isMain() {
+        return menu.isMain();
+    }
+
+    public boolean isDessert() {
+        return menu.isDessert();
+    }
+
     public boolean isDrink() {
         return menu.isDrink();
     }
