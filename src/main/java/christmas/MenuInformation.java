@@ -10,7 +10,7 @@ public enum MenuInformation {
     CHRISTMAS_PASTA("크리스마스파스타", 25000, Category.MAIN),
     CHOCOLATE_CAKE("초코케이크", 15000, Category.DESSERT),
     ICE_CREAM("아이스크림", 5000, Category.DESSERT),
-    ZERO_COKE("제로콜라", 5000, Category.DRINK),
+    ZERO_COKE("제로콜라", 3000, Category.DRINK),
     RED_WINE("레드와인", 60000, Category.DRINK),
     CHAMPAGNE("샴페인", 25000, Category.DRINK);
 
@@ -38,7 +38,11 @@ public enum MenuInformation {
         return category == Category.DRINK;
     }
 
-    public String getMenu(final int count) {
-        return name + " " + count;
+    public String getMessageCombinedMenuAndCount(final int count) {
+        return name + " " + count + "개";
+    }
+
+    public int getPriceByCount(final int count) {
+        return price * count;
     }
 }

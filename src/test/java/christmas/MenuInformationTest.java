@@ -29,4 +29,20 @@ public class MenuInformationTest {
 
         assertThat(menu.isDrink()).isTrue();
     }
+
+    @DisplayName("매개변수로 들어온 메뉴 개수에 따른 주문 메뉴 메시지 만들기")
+    @Test
+    void makeMenuMessage() {
+        MenuInformation menu = MenuInformation.RED_WINE;
+
+        assertThat(menu.getMessageCombinedMenuAndCount(3)).isEqualTo("레드와인 3개");
+    }
+
+    @DisplayName("매개변수로 들어온 메뉴 개수에 따른 가격 반환")
+    @Test
+    void calculatePrice() {
+        MenuInformation menu = MenuInformation.CHAMPAGNE;
+
+        assertThat(menu.getPriceByCount(3)).isEqualTo(25000 * 3);
+    }
 }
