@@ -34,4 +34,33 @@ public class DateTest {
 
         assertThat(date).isInstanceOf(Date.class);
     }
+
+    @DisplayName("크리스마스 디데이와 다른 이벤트 기간에 해당하는지 확인")
+    @ValueSource(strings = {"1", "10", "25"})
+    @ParameterizedTest
+    void isChristmasEventDay(String day) {
+        Date date = new Date(day);
+
+        assertThat(date.isChristmasEvent()).isTrue();
+        assertThat(date.isEvent()).isTrue();
+    }
+
+    @DisplayName("크리스마스 디데이에는 해당하지 않지만, 다른 이벤트에는 해당하는지 확인")
+    @ValueSource(strings = {"26", "30", "31"})
+    @ParameterizedTest
+    void isNotChristmasEventButIncludingOhterEventDay(String day) {
+        Date date = new Date(day);
+
+        assertThat(date.isChristmasEvent()).isFalse();
+        assertThat(date.isEvent()).isTrue();
+    }
+
+    @DisplayName("평일인지 확인")
+    @ValueSource(strings = {"5", "13", "25"})
+    @ParameterizedTest
+    void isWeekday(String day) {
+        Date date = new Date(day);
+
+        assertThat(date.isWeekend()).isFalse();
+    }
 }
