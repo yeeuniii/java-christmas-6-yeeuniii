@@ -6,6 +6,7 @@ public class Benefit {
     private static final int WEEK_EVENT_PRICE = 2023;
     private static final int SPECIAL_EVENT_PRICE = 1000;
     private final Date date;
+    private int totalDiscount = 0;
 
     public Benefit(final Date date) {
         this.date = date;
@@ -17,7 +18,9 @@ public class Benefit {
 
     public int getChristmasDayDiscount() {
         if (date.isChristmasEvent()) {
-            return 1000 + (date.getDay() - 1) * 100;
+            int discount = 1000 + (date.getDay() - 1) * 100;
+            totalDiscount += discount;
+            return discount;
         }
         return 0;
     }
@@ -30,17 +33,26 @@ public class Benefit {
     }
 
     public int getWeekdayDiscount(final int count) {
-        return calculateDiscount(!date.isWeekend(), count);
+        int discount = calculateDiscount(!date.isWeekend(), count);
+        totalDiscount += discount;
+        return discount;
     }
 
     public int getWeekendDiscount(final int count) {
-        return calculateDiscount(date.isWeekend(), count);
+        int discount = calculateDiscount(date.isWeekend(), count);
+        totalDiscount += discount;
+        return discount;
     }
 
     public int getSpecialDiscount() {
         if (date.isEvent()) {
+            totalDiscount += SPECIAL_EVENT_PRICE;
             return SPECIAL_EVENT_PRICE;
         }
         return 0;
+    }
+
+    public int getTotalDiscount() {
+        return this.totalDiscount;
     }
 }

@@ -19,6 +19,8 @@ public class OutputView {
         System.out.println(makeGiftMenuMessage(benefit));
         System.out.println("\n<헤택 내역>");
         System.out.println(makeAllDiscountMessage(order, benefit));
+        System.out.println("<총헤택 금액>");
+        System.out.println(makeTotalDiscountPriceMessage(benefit));
     }
 
     private static String makeGiftMenuMessage(final Benefit benefit) {
@@ -34,19 +36,32 @@ public class OutputView {
         if (!benefit.isEnoughGiftEvent(totalPrice)) {
             return NONE_MESSAGE;
         }
-        message = makeDiscountMessage("크리스마스 디데이 할인", convertFormat(benefit.getChristmasDayDiscount()));
-        message += makeDiscountMessage("평일 할인", convertFormat(benefit.getWeekdayDiscount(order.getNumberOfMainMenu())));
-        message += makeDiscountMessage("주말 할인", convertFormat(benefit.getWeekendDiscount(order.getNumberOfDessertMenu())));
-        message += makeDiscountMessage("특별 할인", convertFormat(benefit.getSpecialDiscount()));
-        message += makeDiscountMessage("증정 이벤트", convertFormat(MenuInformation.CHAMPAGNE.getPriceByCount(1)));
+        message = makeDiscountMessage("크리스마스 디데이 할인", benefit.getChristmasDayDiscount());
+        message += makeDiscountMessage("평일 할인", benefit.getWeekdayDiscount(order.getNumberOfMainMenu()));
+        message += makeDiscountMessage("주말 할인", benefit.getWeekendDiscount(order.getNumberOfDessertMenu()));
+        message += makeDiscountMessage("특별 할인", benefit.getSpecialDiscount());
+        message += makeDiscountMessage("증정 이벤트", MenuInformation.CHAMPAGNE.getPriceByCount(1));
         return message;
     }
 
-    private static String makeDiscountMessage(final String discountType, final String discountPrice) {
-        if (discountPrice.equals("0")) {
+    private static String makeDiscountMessage(final String discountType, final int discountPrice) {
+        if (discountPrice == 0) {
             return "";
         }
-        return discountType + ": -" + discountPrice + WON + "\n";
+        return discountType + ": " + makePriceMessage(discountPrice) + "\n";
+    }
+
+    private static String makeTotalDiscountPriceMessage(final Benefit benefit) {
+        int totalDiscount = benefit.getTotalDiscount();
+
+        if (benefit.isEnoughGiftEvent(totalPrice)) {
+            totalDiscount += MenuInformation.CHAMPAGNE.getPriceByCount(1);
+        }
+        return makePriceMessage(totalDiscount);
+    }
+
+    private static String makePriceMessage(final int price) {
+        return convertFormat(price * -1) + WON;
     }
 
     private static String convertFormat(final int message) {
