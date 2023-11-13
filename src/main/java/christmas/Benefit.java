@@ -37,7 +37,7 @@ public class Benefit {
         return calculateDiscount(date.isWeekend(), count);
     }
 
-    public int getSpecialDiscount(final int count) {
+    public int getSpecialDiscount() {
         if (date.isEvent()) {
             return SPECIAL_EVENT_PRICE;
         }
