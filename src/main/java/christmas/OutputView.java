@@ -14,7 +14,7 @@ public class OutputView {
         System.out.println("<주문 메뉴>");
         System.out.println(order.getAllMenuList());
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(convertFormat(totalPrice) + "원");
+        System.out.println(makePriceMessage(totalPrice));
         System.out.println("\n<증정 메뉴>");
         System.out.println(makeGiftMenuMessage(benefit));
         System.out.println("\n<헤택 내역>");
@@ -48,7 +48,7 @@ public class OutputView {
         if (discountPrice == 0) {
             return "";
         }
-        return discountType + ": " + makePriceMessage(discountPrice) + "\n";
+        return discountType + ": " + makePriceMessage(discountPrice * -1) + "\n";
     }
 
     private static String makeTotalDiscountPriceMessage(final Benefit benefit) {
@@ -57,11 +57,11 @@ public class OutputView {
         if (benefit.isEnoughGiftEvent(totalPrice)) {
             totalDiscount += MenuInformation.CHAMPAGNE.getPriceByCount(1);
         }
-        return makePriceMessage(totalDiscount);
+        return makePriceMessage(totalDiscount * -1);
     }
 
     private static String makePriceMessage(final int price) {
-        return convertFormat(price * -1) + WON;
+        return convertFormat(price) + WON;
     }
 
     private static String convertFormat(final int message) {
