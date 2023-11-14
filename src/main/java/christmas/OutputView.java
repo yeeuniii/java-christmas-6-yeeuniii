@@ -12,15 +12,15 @@ public class OutputView {
         System.out.println(table.getMenuList());
         System.out.println("<할인 전 총주문 금액>");
         System.out.println(makePriceMessage(table.getTotalPriceBeforeDiscount()));
-        System.out.println("\n<증정 메뉴>");
-        System.out.println(table.getGiftMenu());
-        System.out.println("\n<헤택 내역>");
+        System.out.println("<증정 메뉴>");
+        System.out.println(table.getGiftMenu() + "\n");
+        System.out.println("<혜택 내역>");
         System.out.println(makeAllDiscountMessage(table));
-        System.out.println("<총헤택 금액>");
+        System.out.println("<총혜택 금액>");
         System.out.println(makePriceMessage(table.getTotalBenefitPrice()));
-        System.out.println("\n<할인 후 예상 결제 금액>");
+        System.out.println("<할인 후 예상 결제 금액>");
         System.out.println(makePriceMessage(table.getTotalPriceAfterDiscount()));
-        System.out.println("\n<12월 이벤트 배지>");
+        System.out.println("<12월 이벤트 배지>");
         System.out.println(table.getBadge());
     }
 
@@ -42,11 +42,11 @@ public class OutputView {
         if (discountPrice == 0) {
             return "";
         }
-        return discountType + ": " + makePriceMessage(discountPrice * -1) + "\n";
+        return discountType + ": " + makePriceMessage(discountPrice * -1);
     }
 
     private static String makePriceMessage(final int price) {
-        return convertFormat(price) + WON;
+        return convertFormat(price) + WON + "\n";
     }
 
     private static String convertFormat(final int message) {
