@@ -28,7 +28,7 @@ public class OutputView {
         String message;
 
         if (!table.startEvent()) {
-            return NONE_MESSAGE;
+            return NONE_MESSAGE + "\n";
         }
         message = makeDiscountMessage("크리스마스 디데이 할인", table.getChristmasDayDiscount());
         message += makeDiscountMessage("평일 할인", table.getWeekdayDiscount());

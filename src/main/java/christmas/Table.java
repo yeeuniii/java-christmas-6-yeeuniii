@@ -1,6 +1,7 @@
 package christmas;
 
 public class Table {
+    private static final int MINIMUM_ORDER_PRICE = 10000;
     private final Order order;
     private final Benefit benefit;
     private final int totalPrice;
@@ -22,7 +23,12 @@ public class Table {
     }
 
     public int getTotalBenefitPrice() {
-        return this.totalDiscountPrice + Benefit.GIFT_EVENT_MENU.getPriceByCount(1);
+        int benefitPrice = this.totalDiscountPrice;
+
+        if (benefit.isEnoughGiftEvent(totalPrice)) {
+            benefitPrice += Benefit.GIFT_EVENT_MENU.getPriceByCount(1);
+        }
+        return benefitPrice;
     }
 
     public int getTotalPriceAfterDiscount() {
@@ -37,7 +43,7 @@ public class Table {
     }
 
     public boolean startEvent() {
-        return benefit.isEnoughGiftEvent(totalPrice);
+        return totalPrice >= MINIMUM_ORDER_PRICE;
     }
 
     public int getChristmasDayDiscount() {
@@ -69,6 +75,6 @@ public class Table {
     }
 
     public String getBadge() {
-        return Badge.getBadgeNameOfDiscount(totalDiscountPrice + Benefit.GIFT_EVENT_MENU.getPriceByCount(1));
+        return Badge.getBadgeNameOfDiscount(getTotalBenefitPrice());
     }
 }
