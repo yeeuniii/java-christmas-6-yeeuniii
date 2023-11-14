@@ -46,11 +46,15 @@ public enum MenuInformation {
         return category == Category.DRINK;
     }
 
-    public String getMessageCombinedMenuAndCount(final int count) {
+    public String makeMessageCombinedMenuAndCount(final int count) {
         return name + " " + count + "개";
     }
 
     public int getPriceByCount(final int count) {
         return price * count;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

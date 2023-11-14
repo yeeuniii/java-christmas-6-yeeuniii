@@ -35,7 +35,7 @@ public class MenuInformationTest {
     void makeMenuMessage() {
         MenuInformation menu = MenuInformation.RED_WINE;
 
-        assertThat(menu.getMessageCombinedMenuAndCount(3)).isEqualTo("레드와인 3개");
+        assertThat(menu.makeMessageCombinedMenuAndCount(3)).isEqualTo("레드와인 3개");
     }
 
     @DisplayName("매개변수로 들어온 메뉴 개수에 따른 가격 반환")

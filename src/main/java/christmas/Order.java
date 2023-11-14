@@ -48,7 +48,7 @@ public class Order {
         return true;
     }
 
-    public String getAllMenuList() {
+    public String makeMenuList() {
         StringBuilder result = new StringBuilder();
 
         for (Menu menu : menus) {

@@ -44,7 +44,7 @@ public class Menu {
     }
 
     public String getMenuAndCount() {
-        return menu.getMessageCombinedMenuAndCount(count);
+        return menu.makeMessageCombinedMenuAndCount(count);
     }
 
     public int getPrice() {

@@ -1,12 +1,12 @@
 package christmas;
 
 public class Benefit {
-    public static final String GIFT_EVENT_MENU = "샴페인";
+    public static final MenuInformation GIFT_EVENT_MENU = MenuInformation.CHAMPAGNE;
+    public static final String NONE = "없음";
     private static final int GIFT_EVENT_PRICE = 120000;
     private static final int WEEK_EVENT_PRICE = 2023;
     private static final int SPECIAL_EVENT_PRICE = 1000;
     private final Date date;
-    private int totalDiscount = 0;
 
     public Benefit(final Date date) {
         this.date = date;
@@ -16,11 +16,9 @@ public class Benefit {
         return price >= GIFT_EVENT_PRICE;
     }
 
-    public int getChristmasDayDiscount() {
+    public int applyChristmasDayDiscount() {
         if (date.isChristmasEvent()) {
-            int discount = 1000 + (date.getDay() - 1) * 100;
-            totalDiscount += discount;
-            return discount;
+            return  1000 + (date.getDay() - 1) * 100;
         }
         return 0;
     }
@@ -32,27 +30,18 @@ public class Benefit {
         return 0;
     }
 
-    public int getWeekdayDiscount(final int count) {
-        int discount = calculateDiscount(!date.isWeekend(), count);
-        totalDiscount += discount;
-        return discount;
+    public int applyWeekdayDiscount(final int count) {
+        return calculateDiscount(!date.isWeekend(), count);
     }
 
-    public int getWeekendDiscount(final int count) {
-        int discount = calculateDiscount(date.isWeekend(), count);
-        totalDiscount += discount;
-        return discount;
+    public int applyWeekendDiscount(final int count) {
+        return calculateDiscount(date.isWeekend(), count);
     }
 
-    public int getSpecialDiscount() {
+    public int applySpecialDiscount() {
         if (date.isEvent()) {
-            totalDiscount += SPECIAL_EVENT_PRICE;
             return SPECIAL_EVENT_PRICE;
         }
         return 0;
-    }
-
-    public int getTotalDiscount() {
-        return this.totalDiscount;
     }
 }
