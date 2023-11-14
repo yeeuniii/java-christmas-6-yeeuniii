@@ -67,4 +67,8 @@ public class Table {
     public int getGiftBenefit() {
         return Benefit.GIFT_EVENT_MENU.getPriceByCount(1);
     }
+
+    public String getBadge() {
+        return Badge.getBadgeNameOfDiscount(totalDiscountPrice + Benefit.GIFT_EVENT_MENU.getPriceByCount(1));
+    }
 }
