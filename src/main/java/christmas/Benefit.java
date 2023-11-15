@@ -3,9 +3,9 @@ package christmas;
 public class Benefit {
     public static final MenuInformation GIFT_EVENT_MENU = MenuInformation.CHAMPAGNE;
     public static final String NONE = "없음";
-    private static final int GIFT_EVENT_PRICE = 120000;
-    private static final int WEEK_EVENT_PRICE = 2023;
-    private static final int SPECIAL_EVENT_PRICE = 1000;
+    public static final int GIFT_EVENT_PRICE = 120000;
+    public static final int WEEK_EVENT_PRICE = 2023;
+    public static final int SPECIAL_EVENT_PRICE = 1000;
     private final Date date;
 
     public Benefit(final Date date) {
@@ -39,7 +39,7 @@ public class Benefit {
     }
 
     public int applySpecialDiscount() {
-        if (date.isEvent()) {
+        if (date.isEvent() && date.isStar()) {
             return SPECIAL_EVENT_PRICE;
         }
         return 0;
