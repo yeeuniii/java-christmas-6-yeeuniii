@@ -45,7 +45,7 @@ public class Order {
 
     private boolean hasOnlyDrink() {
         for (Menu menu : menus) {
-            if (!menu.isDrink()) {
+            if (menu.getCountOfCategory(Category.DRINK) == 0) {
                 return false;
             }
         }
@@ -98,24 +98,11 @@ public class Order {
         return total;
     }
 
-    public int getNumberOfMainMenu() {
+    public int getOrderNumberOfCategory(Category category) {
         int count = 0;
 
         for (Menu menu : menus) {
-            if (menu.isMain()) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    public int getNumberOfDessertMenu() {
-        int count = 0;
-
-        for (Menu menu : menus) {
-            if (menu.isDessert()) {
-                count++;
-            }
+            count += menu.getCountOfCategory(category);
         }
         return count;
     }

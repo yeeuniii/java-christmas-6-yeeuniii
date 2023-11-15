@@ -50,7 +50,7 @@ public class OrderTest {
         String[] menus = {"티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"};
         Order order = new Order(menus);
 
-        assertThat(order.getNumberOfMainMenu()).isEqualTo(2);
-        assertThat(order.getNumberOfDessertMenu()).isEqualTo(1);
+        assertThat(order.getOrderNumberOfCategory(Category.MAIN)).isEqualTo(2);
+        assertThat(order.getOrderNumberOfCategory(Category.DESSERT)).isEqualTo(1);
     }
 }

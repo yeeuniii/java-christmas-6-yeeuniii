@@ -31,16 +31,13 @@ public class Menu {
         return !count.matches("[1-9]\\d*");
     }
 
-    public boolean isMain() {
-        return menu.isMain();
-    }
-
-    public boolean isDessert() {
-        return menu.isDessert();
-    }
-
-    public boolean isDrink() {
-        return menu.isDrink();
+    public int getCountOfCategory(final Category category) {
+        if ((category == Category.MAIN && menu.isMain())
+            || (category == Category.DESSERT && menu.isDessert())
+            || (category == Category.DRINK && menu.isDrink())) {
+            return count;
+        }
+        return 0;
     }
 
     public String getMenuAndCount() {

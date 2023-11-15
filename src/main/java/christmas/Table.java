@@ -48,24 +48,28 @@ public class Table {
 
     public int getChristmasDayDiscount() {
         int discount = benefit.applyChristmasDayDiscount();
+
         totalDiscountPrice += discount;
         return discount;
     }
 
     public int getWeekdayDiscount() {
-        int discount = benefit.applyWeekdayDiscount(order.getNumberOfMainMenu());
+        int discount = benefit.applyWeekdayDiscount(order.getOrderNumberOfCategory(Category.MAIN));
+
         totalDiscountPrice += discount;
         return discount;
     }
 
     public int getWeekendDiscount() {
-        int discount = benefit.applyWeekendDiscount(order.getNumberOfDessertMenu());
+        int discount = benefit.applyWeekendDiscount(order.getOrderNumberOfCategory(Category.DESSERT));
+
         totalDiscountPrice += discount;
         return discount;
     }
 
     public int getSpecialDiscount() {
         int discount = benefit.applySpecialDiscount();
+
         totalDiscountPrice += discount;
         return discount;
     }
