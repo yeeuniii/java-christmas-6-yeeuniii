@@ -60,7 +60,7 @@ public class OrderTest {
         Order order = new Order(menus);
 
         assertThat(order.getOrderNumberOfCategory(Category.MAIN)).isEqualTo(2);
-        assertThat(order.getOrderNumberOfCategory(Category.DESSERT)).isEqualTo(1);
+        assertThat(order.getOrderNumberOfCategory(Category.DESSERT)).isEqualTo(2);
     }
 
     @DisplayName("20개 이상의 메뉴 주문했을 때 처리(최대 주문수를 초과했을 때, 수가 딱 맞아 떨어지는 경우)")
