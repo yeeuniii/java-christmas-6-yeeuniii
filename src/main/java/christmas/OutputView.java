@@ -1,6 +1,7 @@
 package christmas;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class OutputView {
     private static final String NONE_MESSAGE = "없음";
@@ -17,7 +18,7 @@ public class OutputView {
         System.out.println("<혜택 내역>");
         System.out.println(makeAllDiscountMessage(table));
         System.out.println("<총혜택 금액>");
-        System.out.println(makePriceMessage(table.getTotalBenefitPrice()));
+        System.out.println(makePriceMessage(table.getTotalBenefitPrice() * -1));
         System.out.println("<할인 후 예상 결제 금액>");
         System.out.println(makePriceMessage(table.getTotalPriceAfterDiscount()));
         System.out.println("<12월 이벤트 배지>");
@@ -34,7 +35,9 @@ public class OutputView {
         message += makeDiscountMessage("평일 할인", table.getWeekdayDiscount());
         message += makeDiscountMessage("주말 할인", table.getWeekendDiscount());
         message += makeDiscountMessage("특별 할인", table.getSpecialDiscount());
-        message += makeDiscountMessage("증정 이벤트", table.getGiftBenefit());
+        if (!Objects.equals(table.getGiftMenu(), Benefit.NONE)) {
+            message += makeDiscountMessage("증정 이벤트", table.getGiftBenefit());
+        }
         return message;
     }
 

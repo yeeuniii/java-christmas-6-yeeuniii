@@ -46,32 +46,25 @@ public class Table {
         return totalPrice >= MINIMUM_ORDER_PRICE;
     }
 
-    public int getChristmasDayDiscount() {
-        int discount = benefit.applyChristmasDayDiscount();
-
+    private int updateTotalDiscountPrice(final int discount) {
         totalDiscountPrice += discount;
         return discount;
+    }
+
+    public int getChristmasDayDiscount() {
+        return updateTotalDiscountPrice(benefit.applyChristmasDayDiscount());
     }
 
     public int getWeekdayDiscount() {
-        int discount = benefit.applyWeekdayDiscount(order.getOrderNumberOfCategory(Category.MAIN));
-
-        totalDiscountPrice += discount;
-        return discount;
+        return updateTotalDiscountPrice(benefit.applyWeekdayDiscount(order.getOrderNumberOfCategory(Category.DESSERT)));
     }
 
     public int getWeekendDiscount() {
-        int discount = benefit.applyWeekendDiscount(order.getOrderNumberOfCategory(Category.DESSERT));
-
-        totalDiscountPrice += discount;
-        return discount;
+        return updateTotalDiscountPrice(benefit.applyWeekendDiscount(order.getOrderNumberOfCategory(Category.MAIN)));
     }
 
     public int getSpecialDiscount() {
-        int discount = benefit.applySpecialDiscount();
-
-        totalDiscountPrice += discount;
-        return discount;
+        return updateTotalDiscountPrice(benefit.applySpecialDiscount());
     }
 
     public int getGiftBenefit() {
