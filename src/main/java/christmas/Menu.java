@@ -51,6 +51,14 @@ public class Menu {
         return menu.getPriceByCount(count);
     }
 
+    public int getCount() {
+        return this.count;
+    }
+
+    public void reduceCount(final int reduced) {
+        this.count -= reduced;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) {
